@@ -3,13 +3,12 @@ import FavouriteReducer from '../reducers/FavouriteReducer'
 import JobReducer from '../reducers/JobReducer'
 import {persistStore, persistReducer} from 'redux-persist'
 import localStorage from 'redux-persist/lib/storage'
-import { encryptTransform } from 'redux-persist-transform-encrypt'
 
 const persistConfig = {
   storage: localStorage,
   key: 'root',
   transforms: [
-    encryptTransform({
+    ecryptTransform({
       secretKey: process.env.REACT_APP_ENV_S3CR37_K3Y
     })
   ]
