@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {getJobsAsync} from '../redux/actions'
 import Job from './Job'
+import {Spinner} from 'react-bootstrap'
 
 const MainSearch = () => {
   const [query, setQuery] = useState('')
   const dispatch = useDispatch()
+  const loader = useSelector((state) => state.jobs.isLoading)
   const jobsFromStore = useSelector((state) => state.jobs.listing.data)
 
   const navigate = useNavigate()
@@ -39,6 +41,7 @@ const MainSearch = () => {
           </Form>
         </Col>
         <Col xs={10} className="mx-auto mb-5">
+          {loader && <Spinner animation='border' variant='info' />}
           {jobsFromStore ? (jobsFromStore.map((jobData, i) => (
             <Job key={jobData._id} i={i} data={jobData} />
           ))) : (<h2>Loading jobs</h2>)}
