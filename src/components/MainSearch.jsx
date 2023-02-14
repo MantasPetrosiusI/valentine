@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {getJobsAsync} from '../redux/actions'
 import Job from './Job'
 import {Spinner} from 'react-bootstrap'
+import { GET_JOBS } from '../redux/actions'
 
 const MainSearch = () => {
   const [query, setQuery] = useState('')
@@ -14,6 +15,12 @@ const MainSearch = () => {
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+  dispatch({
+    type: GET_JOBS,
+    payload: [],
+  })
+}, [dispatch])
   const handleChange = (e) => {
     setQuery(e.target.value)
   }

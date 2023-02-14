@@ -14,8 +14,6 @@ export const removeFromFavorites = (data) => ({
   payload: data
 });
 
-
-
 export const getJobsAsync = (query) =>{
   return async(dispatch) =>{
     const baseEndpoint ="https://strive-benchmark.herokuapp.com/api/jobs?search="

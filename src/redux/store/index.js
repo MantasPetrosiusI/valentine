@@ -5,6 +5,7 @@ import {persistStore, persistReducer} from 'redux-persist'
 import localStorage from 'redux-persist/lib/storage'
 import { encryptTransform } from 'redux-persist-transform-encrypt'
 
+
 const persistConfig = {
   storage: localStorage,
   key: 'root',
